@@ -1,0 +1,10 @@
+<h1 class="text-center mt-2">{{ title }}</h1>
+<!--<app-card *ngFor="let card of cards"-->
+<!--  [title]="card.title" [image]="card.image">-->
+<!--</app-card>-->
+
+@for(card of cards; track $index){
+  <app-card [title]="card.title" [image]="card.image"
+  (onRemove)="removeCard(card)">
+  </app-card>
+}

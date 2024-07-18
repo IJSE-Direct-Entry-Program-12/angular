@@ -1,0 +1,14 @@
+<div class="border m-3 rounded p-2">
+  <header class="border-bottom pb-1 fw-bold text-center">
+    {{ title.toUpperCase() }}
+  </header>
+  <main class="text-center">
+    <img src="/img/{{ image }}.jpg" alt="Image not found">
+  </main>
+  <footer class="border-top pt-2 d-flex justify-content-between
+    align-items-center">
+    <div>Click to remove the card</div>
+    <button (click)="remove()"
+            class="btn btn-danger btn-sm">Remove</button>
+  </footer>
+</div>

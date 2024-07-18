@@ -1,0 +1,32 @@
+@if (loading) {
+  <div class="d-flex justify-content-center
+      vh-100 align-items-center">
+    <div class="loader"></div>
+  </div>
+} @else {
+  <div>
+    @for(item of todoItems; track item.id){
+      <div class="p-2">
+        <label>
+          <input type="checkbox" class="form-check-input"
+                 [checked]="item.completed">
+<!--          @switch (findUser(item.userId)?.name){-->
+<!--            @case('Kasun'){-->
+<!--              <span class="text-primary">Kasun: </span>-->
+<!--            }@case ('Nuwan'){-->
+<!--              <span class="text-success">Nuwan: </span>-->
+<!--            }@case ('Upul'){-->
+<!--              <span class="text-success fs-4">Upul: </span>-->
+<!--            }-->
+<!--          }-->
+            <ng-container [ngSwitch]="findUser(item.userId)?.name">
+              <span *ngSwitchCase="'Kasun'" class="text-primary">Kasun: </span>
+              <span *ngSwitchCase="'Nuwan'" class="text-success">Nuwan: </span>
+              <span *ngSwitchCase="'Upul'" class="text-success fs-4">Upul: </span>
+            </ng-container>
+          {{ item.title }}
+        </label>
+      </div>
+    }
+  </div>
+}

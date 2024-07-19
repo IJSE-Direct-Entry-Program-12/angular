@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {afterNextRender, afterRender, AfterViewChecked, AfterViewInit, Component, ElementRef} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {update} from "immutable";
 
@@ -66,17 +66,20 @@ import {update} from "immutable";
     <button (click)="updateItems2()"
             class="btn btn-sm btn-danger">Update Items
     </button>
-    <ul>
-      <li *ngFor="let item of items2; trackBy: trackItemFn"
-          class="p-2">
-        {{ item.value }} - {{item.name}}
-      </li>
+    <ul id="list">
+      @for (item of items2; track item.value) {
+        <li class="p-2">
+          <span>{{ item.value }}</span> -
+          <span></span>
+        </li>
+      }
     </ul>
     <hr>
     <h2 class="text-center">Angular 18+</h2>
-    @for(customer of customers; track customer.id){
-        <li>{{customer.id}} - {{customer.name}}
-          - {{customer.address}}</li>
+    @for (customer of customers; track customer.id) {
+      <li>{{ customer.id }} - {{ customer.name }}
+        - {{ customer.address }}
+      </li>
     } @empty {
       No Customers Found
     }
@@ -91,7 +94,7 @@ import {update} from "immutable";
     }
   `
 })
-export class NgForComponent {
+export class NgForComponent{
   items =
     ['First', 'Second', 'Third', 'Fourth', 'Fifth'];
   items2 =
@@ -107,9 +110,9 @@ export class NgForComponent {
 
   updateItems2() {
     this.items2 =
-      [{value: 'First', name: 'Kasun'},
+      [{value: 'First', name: 'Kasun Sampath'},
         {value: 'Second', name: 'Ruwan'},
-        {value: 'Third', name: 'Upul'},
+        {value: 'Third', name: 'Upul Tharanga'},
         {value: 'Fourth', name: 'Supun'},
         {value: 'Fifth', name: 'Sachin'}];
   }
@@ -136,5 +139,22 @@ export class NgForComponent {
                   customer: { id: string, name: string, address: string }): string {
     return customer.id;
   }
+
+  constructor(private elmRef: ElementRef) {
+    afterRender(()=>{
+            this.elmRef.nativeElement.querySelectorAll("ul#list > li > span:nth-child(2)")
+              .forEach((elm:HTMLLIElement, index:number) =>{
+                  elm.innerText = this.items2[index].name;
+              });
+    });
+  }
+
+  // ngAfterViewChecked(): void {
+  //       this.elmRef.nativeElement.querySelectorAll("ul#list > li > span:nth-child(2)")
+  //         .forEach((elm:HTMLLIElement, index:number) =>{
+  //             elm.innerText = this.items2[index].name;
+  //         });
+  //   }
+
 
 }

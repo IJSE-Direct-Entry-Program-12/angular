@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/bindings",
+            "outputPath": "dist/angular-with-tailwindcss",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -84,10 +84,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "bindings:build:production"
+              "buildTarget": "angular-with-tailwindcss:build:production"
             },
             "development": {
-              "buildTarget": "bindings:build:development"
+              "buildTarget": "angular-with-tailwindcss:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,11 @@
+/*@layer components {*/
+  .form-control {
+    @apply border px-2 py-1 rounded hover:border-sky-400
+    focus:border-sky-500 focus:outline-0
+  }
+/*}*/
+
+.btn {
+  @apply py-1 px-2 rounded text-white
+}
+

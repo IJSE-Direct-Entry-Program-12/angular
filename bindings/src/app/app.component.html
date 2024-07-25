@@ -1,0 +1,52 @@
+<h1 class="text-center text-3xl mt-2 font-bold">
+  Angular Bindings
+</h1>
+<div class="mt-2 text-center grid gap-y-2">
+  <h2 class="text-xl" title="flag ? 10 : 20">Hover Me</h2>
+  <h2 class="text-xl" [attr.title]="flag ? 10 : 20">Hover Me</h2>
+</div>
+<div class="mt-2 p-2 text-center">
+  <input type="checkbox" checked> Check Box 1
+  <input type="checkbox" [attr.checked]="false"> Check Box 2
+  <!-- Angular/React  -->
+  <input type="checkbox" [checked]="isFlag()"> Check Box 3
+</div>
+<div class="text-center">
+  <app-first first="str1" [second]="str2" />
+</div>
+<div class="mt-2 text-center">
+  <button class="bg-sky-500 hover:bg-sky-400 active:bg-sky-600
+                px-2 py-1 rounded text-white
+                shadow hover:shadow-2xl"
+    (click)="flag = !flag">
+    Click Me
+  </button>
+</div>
+<!-- 1. With the same component -->
+<div class="text-center mt-2">
+  <input type="text" (input)="updateInputText($event);"
+   class="border rounded p-2 border-black text-center">
+  <br> {{inputStr}}
+</div>
+<hr class="my-2">
+<!-- 2. Parent-child interaction -->
+<div class="text-center mt-2">
+  <app-second (update)="childInput = $event" />
+  <br> {{ childInput }}
+</div>
+<hr class="my-2">
+<!-- 3. Two-way data binding -->
+<div class="text-center mt-2">
+  <input type="text" [(ngModel)]="twoWayBinding"
+         class="border rounded p-2 border-black text-center">
+  <br> {{ twoWayBinding }}
+</div>
+<hr class="my-2">
+<div class="p-2 flex justify-center">
+  <input #range class="rotate-90 origin-top-left translate-x-10"
+         type="range" [value]="parentValue"
+         (input)="updateValue(range.valueAsNumber)">
+<!--  <app-third [value]="parentValue" (valueChange)="parentValue = $event"/>-->
+  <app-third [(value)]="parentValue" />
+</div>
+<input type="number" min="0" max="100" value="20">

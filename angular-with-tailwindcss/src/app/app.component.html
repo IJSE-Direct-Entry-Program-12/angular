@@ -1,0 +1,57 @@
+<h1 class="text-center text-3xl mt-2 text-sky-600">
+  Hello Angular + Tailwind CSS
+</h1>
+<div class="text-center mt-2">
+  <button class="bg-sky-400 p-2 rounded text-white
+                  hover:bg-sky-300 active:bg-sky-500">
+    Click Me
+  </button>
+</div>
+
+<form action="javascript:void(0)"
+      class="w-11/12 mx-auto border mt-3 rounded">
+    <header class="flex justify-between p-2
+     items-center border-b bg-slate-100">
+      <h1 class="font-bold text-xl">Customer Details</h1>
+      <button class="bg-lime-700 py-1 px-2 rounded text-white
+      hover:bg-lime-600 active:bg-lime-800 cursor-pointer">
+        + NEW CUSTOMER
+      </button>
+    </header>
+    <main class="grid grid-cols-[85px_1fr] gap-y-2 gap-x-1 p-2">
+      <label for="txt-id" class="justify-self-end self-center">
+        ID :
+      </label>
+      <input id="txt-id" type="text" class="border px-2 py-1 rounded
+      hover:border-sky-400 focus:border-sky-500 focus:outline-0"
+      placeholder="Eg. C001">
+      <label for="txt-name" class="justify-self-end">NAME :</label>
+      <input id="txt-name" type="text" class="border px-2 py-1 rounded
+      hover:border-sky-400 focus:border-sky-500 focus:outline-0"
+      placeholder="Eg. Kasun Sampath">
+      <label for="txt-address" class="justify-self-end">ADDRESS :
+      </label>
+      <textarea id="txt-address" class="border px-2 py-1 rounded
+      hover:border-sky-400 focus:border-sky-500 focus:outline-0"
+      placeholder="Eg. #20B, Grace Peries Road, Panadura"></textarea>
+      <div class="col-start-2 flex gap-2">
+        <button class="bg-sky-600 py-1 px-2 rounded text-white
+        hover:bg-sky-500 active:bg-sky-700">
+          SAVE
+        </button>
+        <button class="bg-amber-600 py-1 px-2 rounded text-white
+        hover:bg-amber-500 active:bg-amber-700"
+        type="reset">
+          CLEAR
+        </button>
+      </div>
+    </main>
+</form>
+
+<div class="mt-4 flex flex-col gap-2 items-center">
+  <img class="w-4/6 rounded-2xl border-4 border-amber-400 cursor-pointer
+    hover:border-lime-500"
+       src="/img/1.jpg" alt="Image 1">
+  <img class="w-4/6 rounded-2xl" src="/img/2.png" alt="Image 2">
+  <img class="w-4/6 rounded-2xl" src="/img/3.jpg" alt="Image 3">
+</div>

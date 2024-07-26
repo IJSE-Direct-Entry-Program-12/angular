@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
+﻿import {Component, effect, inject} from '@angular/core';
 import {ThirdComponent} from "./thrid/third.component";
 import {ValueService} from "../service/value.service";
 
@@ -12,11 +12,11 @@ import {ValueService} from "../service/value.service";
   styleUrl: './second.component.css'
 })
 export class SecondComponent {
-    value = 40;
-    valueService = inject(ValueService);
+  value = 40;
+  valueService = inject(ValueService);
+  myEffect = effect(() => this.value = this.valueService.getValue());
 
   constructor() {
-    this.valueService.getValue().subscribe(
-      value => this.value = value);
+
   }
 }

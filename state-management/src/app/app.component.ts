@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, effect} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {FirstComponent} from "./first/first.component";
 import {SecondComponent} from "./second/second.component";
 import {PercentPipe} from "@angular/common";
@@ -16,7 +16,6 @@ export class AppComponent {
   value = 75;
 
   constructor(private valueService: ValueService) {
-    valueService.getValue().subscribe(
-      value => this.value = value);
+    effect(() => this.value = valueService.getValue());
   }
 }

@@ -1,23 +1,21 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, Subject} from "rxjs";
+import {Injectable, signal} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValueService {
 
-  private valueSubject =
-    new BehaviorSubject(20);
+  private value = signal(10);
 
   constructor() {
     console.log("Value Service Created");
   }
 
-  public getValue(): Subject<number>{
-    return this.valueSubject;
+  public getValue(): number{
+    return this.value();
   }
 
   public updateValue(value: number){
-    this.valueSubject.next(value);    // notify
+    this.value.set(value);
   }
 }

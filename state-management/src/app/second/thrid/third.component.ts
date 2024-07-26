@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import {Component, effect, EventEmitter, inject, Input, Output} from '@angular/core';
 import {ValueService} from "../../service/value.service";
 
 @Component({
@@ -18,8 +18,6 @@ export class ThirdComponent {
   }
 
   constructor() {
-    this.valueService.getValue().subscribe(
-      value => this.value = value
-    )
+    effect(() => this.value = this.valueService.getValue());
   }
 }

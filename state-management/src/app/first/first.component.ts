@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
+import {Component, effect, EventEmitter, Inject, Input, Output} from '@angular/core';
 import {ValueService} from "../service/value.service";
 
 @Component({
@@ -13,8 +13,7 @@ export class FirstComponent {
 
   constructor(@Inject(ValueService)
               private valueService: ValueService) {
-    valueService.getValue().subscribe(
-      value => this.value = value);
+    effect(() => this.value = valueService.getValue());
   }
 
   updateValue(value: number){

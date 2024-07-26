@@ -1,0 +1,14 @@
+<h2 class="text-center mt-2">
+  State Management in Angular
+</h2>
+<div class="text-center">
+  {{ value / 100 | percent:'2.2-2' }}
+</div>
+<div class="d-flex justify-content-center gap-2 p-3">
+  <div class="flex-grow-1 border p-2">
+    <app-first [(value)]="value"/>
+  </div>
+  <div class="flex-grow-1 border p-2">
+    <app-second [value]="value" (valueChange)="value = $event"/>
+  </div>
+</div>

@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {ThirdComponent} from "./thrid/third.component";
+import {ValueService} from "../service/value.service";
 
 @Component({
   selector: 'app-second',
@@ -11,12 +12,11 @@ import {ThirdComponent} from "./thrid/third.component";
   styleUrl: './second.component.css'
 })
 export class SecondComponent {
-    @Input()
     value = 40;
-    @Output()
-    valueChange = new EventEmitter<number>();
+    valueService = inject(ValueService);
 
-    updateValue(value: number){
-      this.valueChange.emit(value);
-    }
+  constructor() {
+    this.valueService.getValue().subscribe(
+      value => this.value = value);
+  }
 }

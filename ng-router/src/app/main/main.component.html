@@ -1,0 +1,15 @@
+<main class="d-flex vh-100">
+  <nav class="border-end">
+    <h2 class="text-center mt-2">App</h2>
+    <menu class="list-unstyled text-center p-2 border-top">
+      <li routerLink="home" routerLinkActive="active" class="px-4 py-2">Home</li>
+      <li routerLink="first" routerLinkActive="active" class="px-4 py-2">First</li>
+      <li routerLink="second" routerLinkActive="active" class="px-4 py-2">Second</li>
+      <li routerLink="third" routerLinkActive="active" class="px-4 py-2">Third</li>
+      <li routerLink="/login" class="px-4 py-2">Logout</li>
+    </menu>
+  </nav>
+  <section class="p-2 text-center">
+    <router-outlet />
+  </section>
+</main>

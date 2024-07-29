@@ -5,12 +5,13 @@ import {HomeComponent} from "./home/home.component";
 import {FirstComponent} from "./first/first.component";
 import {SecondComponent} from "./second/second.component";
 import {ThirdComponent} from "./third/third.component";
+import {AuthGuard} from "./auth.guard";
 
 export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/login'
+    redirectTo: '/main'
   },
   {
     path: 'login',
@@ -18,6 +19,7 @@ export const routes: Routes = [
   },
   {
     path: 'main',
+    canActivate: [AuthGuard],
     component: MainComponent,
     children: [
       {

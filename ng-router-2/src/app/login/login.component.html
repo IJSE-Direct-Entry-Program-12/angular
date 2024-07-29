@@ -1,0 +1,22 @@
+<main class="d-flex vh-100
+justify-content-center align-items-center">
+  <form action="javascript:void(0)"
+        class="border rounded p-3 text-center">
+    <h1 class="mb-3">App Login</h1>
+    <p>Please enter your credentials to log in</p>
+    <div class="mb-3">
+      <label class="form-label" for="txt-username">Username</label>
+      <input #txtUsername type="text" id="txt-username"
+             class="form-control text-center"
+             placeholder="Enter your username here">
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="txt-username">Password</label>
+      <input #txtPassword type="password" id="txt-password"
+             class="form-control text-center"
+             placeholder="Enter your password here">
+    </div>
+    <button class="btn btn-primary"
+            (click)="login(txtUsername, txtPassword)">Login</button>
+  </form>
+</main>

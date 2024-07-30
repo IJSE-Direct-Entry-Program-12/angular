@@ -1,0 +1,60 @@
+<h3 class="mb-3 border-bottom pb-2">
+  Customer Details
+</h3>
+<form (ngSubmit)="saveCustomer(frmModel)" #frmModel="ngForm">
+  <div class="mb-3">
+    <label class="form-label" for="txt-id">Customer ID</label>
+    <input name="id" [(ngModel)]="customer.id"
+           #idNgModel="ngModel"
+           [class.is-invalid]="idNgModel.touched && idNgModel.invalid"
+           [class.is-valid]="idNgModel.touched && idNgModel.valid"
+           required pattern="^C\d{3}$"
+           class="form-control" type="text" id="txt-id"
+           placeholder="Eg. C001">
+    @if (idNgModel.hasError('pattern')) {
+      <small class="invalid-feedback">ID is invalid</small>
+    } @else {
+      <small class="invalid-feedback">ID can't be empty</small>
+    }
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="txt-name">Customer Name</label>
+    <input name="name" [(ngModel)]="customer.name"
+           #nameNgModel="ngModel"
+           [class.is-invalid]="nameNgModel.touched && nameNgModel.invalid"
+           [class.is-valid]="nameNgModel.touched && nameNgModel.valid"
+           customerName
+           class="form-control" type="text" id="txt-name"
+           placeholder="Eg. Kasun Sampath">
+    <small class="invalid-feedback">
+      @if (nameNgModel.hasError('pattern')) {
+        Name can only contain letters and digits
+      } @else if (nameNgModel.hasError('minlength')) {
+        Name should be at least 3 characters long
+      } @else {
+        Name can't be empty
+      }
+    </small>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="txt-contact">Customer Contact</label>
+    <input name="contact" [(ngModel)]="customer.contact"
+           #contactNgModel="ngModel"
+           [class.is-invalid]="contactNgModel.touched && contactNgModel.invalid"
+           [class.is-valid]="contactNgModel.touched && contactNgModel.valid"
+           required pattern="^\d{3}-\d{7}$"
+           class="form-control" type="text" id="txt-contact"
+           placeholder="Eg. 011-1234567">
+    <small class="invalid-feedback">
+      @if (contactNgModel.hasError('pattern')) {
+        Invalid contact number
+      } @else {
+        Contact number can't be empty
+      }
+    </small>
+  </div>
+  <div class="d-flex gap-2">
+    <button class="btn btn-primary">Save</button>
+    <button type="reset" class="btn btn-warning">Clear</button>
+  </div>
+</form>

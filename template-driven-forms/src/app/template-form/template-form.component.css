@@ -1,0 +1,11 @@
+.ng-dirty.ng-valid {
+  border-color: lime;
+  border-left: 5px solid lime;
+  box-shadow: 0 0 0 0.25rem rgba(0, 255, 0, 0.25);
+}
+
+.ng-dirty.ng-invalid {
+  border-color: red;
+  border-left: 5px solid red;
+  box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25)
+}

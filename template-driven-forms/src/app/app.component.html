@@ -1,0 +1,30 @@
+<h1 class="text-center mt-2">
+  Template Driven Forms
+</h1>
+<div class="p-2">
+  <div class="d-flex gap-1">
+    <input type="text"
+           #txt
+           [value]="myInput"
+           (input)="myInput = txt.value; isInputDirty = true"
+           placeholder="Enter something here"
+           [class.input-valid]="isInputDirty && isInputValid()"
+           [class.input-invalid]="isInputDirty && !isInputValid()"
+           class="form-control">
+    <button class="btn btn-primary" (click)="validate()">Validate</button>
+  </div>
+  @if (isInputDirty && !isInputValid()) {
+    <div class="px-2 mt-1">
+      <small class="text-danger">Input can't be blank and only allow letters and digits</small>
+    </div>
+  }
+  <div class="mt-2 px-2"><strong>Entered:</strong> {{ myInput }}</div>
+</div>
+<hr>
+<div class="p-2">
+  <app-template-form />
+</div>
+<hr>
+<div class="p-2">
+  <app-customer-form />
+</div>

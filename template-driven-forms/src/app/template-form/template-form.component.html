@@ -1,0 +1,18 @@
+<div class="d-flex gap-1">
+  <input type="text"
+         required
+         pattern="^[A-Za-z0-9 ]+$"
+         #inputNgModel="ngModel"
+         [(ngModel)]="myInput"
+         placeholder="Enter something here"
+         class="form-control">
+  <button class="btn btn-primary"
+          (click)="validate(inputNgModel)">Validate</button>
+</div>
+@if (inputNgModel.dirty && inputNgModel.invalid) {
+  <div class="px-2 mt-1">
+    <small class="text-danger">Input can't be blank and only allow letters and digits</small>
+  </div>
+}
+<div class="mt-2 px-1"><strong>Entered: </strong> {{ myInput }}
+</div>

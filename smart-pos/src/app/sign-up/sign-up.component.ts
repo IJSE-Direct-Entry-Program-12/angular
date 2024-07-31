@@ -3,6 +3,7 @@ import {MatButton} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {RouterLink} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-sign-up',
@@ -19,4 +20,7 @@ import {RouterLink} from "@angular/router";
 })
 export class SignUpComponent {
 
+  constructor(titleService: Title) {
+    titleService.setTitle("Sign Up - SmartPOS")
+  }
 }

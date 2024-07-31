@@ -1,24 +1,25 @@
 <div class="h-dvh flex justify-center items-center">
-  <div class="grid justify-center content-center">
+  <div class="grid justify-center content-center
+    border border-solid border-gray-300 p-4 pb-2 rounded">
     <h1 class="!text-4xl">Sign In</h1>
-    <p>Enter your login credentials to sign in</p>
+    <div class="mb-5">Enter your login credentials to sign in</div>
     <div>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="w-full">
         <mat-label>Username</mat-label>
         <input #txtUsername matInput placeholder="Enter your username">
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="w-full">
         <mat-label>Password</mat-label>
         <input #txtPassword type="password" matInput placeholder="Enter your password">
       </mat-form-field>
     </div>
     <div>
-      <button mat-button (click)="signIn(txtUsername.value, txtPassword.value)">Sign In</button>
+      <button mat-stroked-button (click)="signIn(txtUsername.value, txtPassword.value)">Sign In</button>
     </div>
-    <div class="mt-3">
-      Yet to create account? <a routerLink="/sign-up">Sign up</a>
+    <div class="mt-5 text-center text-sm border-t border-gray-300 border-solid border-0 py-3">
+      Yet to create an account? <a routerLink="/sign-up">sign up</a>
     </div>
   </div>
 </div>

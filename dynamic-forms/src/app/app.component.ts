@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -12,18 +12,29 @@ import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 export class AppComponent {
   private fb = inject(FormBuilder);
   form = this.fb.group({
-    nic: ['123456789V'],
-    name: ['Kasun Sampath'],
-    gender: ['male'],
+    nic: [''],
+    name: [''],
+    gender: [''],
     subjects: this.fb.array([
       this.fb.group({
-        name: ['Operating Systems'],
-        marks: ['80']
+        name: [''],
+        marks: ['']
       }),
       this.fb.group({
-        name: ['DBMS'],
-        marks: ['95']
+        name: [''],
+        marks: ['']
+      }),
+      this.fb.group({
+        name: [''],
+        marks: ['']
       })
     ])
   });
+
+  addNewSubject() {
+    this.form.controls.subjects.push(this.fb.group({
+      name: [''],
+      marks: ['']
+    }))
+  }
 }

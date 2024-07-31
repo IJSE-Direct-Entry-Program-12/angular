@@ -35,24 +35,29 @@
     <label for="rd-gender-male" class="form-label fw-bold">
       Student Mark Sheet
     </label>
-    <table>
-      @for(subject of form.controls.subjects.controls; track $index){
+    <table class="w-100">
+      @for (subject of form.controls.subjects.controls; track $index) {
         <tr [formGroup]="subject">
           <td>
             <input type="text" class="form-control"
                    formControlName="name"
-                   placeholder="Enter subject 1">
+                   placeholder="Enter subject {{$index + 1}}">
           </td>
           <td>
-            <input type="text" class="form-control"
+            <input type="number" class="form-control text-center"
+                   min="0" max="100"
                    formControlName="marks"
-                   placeholder="Enter subject 1 marks">
+                   placeholder="Marks">
           </td>
           <td>
-            @if($first){
-              <button class="btn btn-primary">+</button>
-            }@else{
-              <button class="btn btn-danger w-100">-</button>
+            @if ($first) {
+              <button (click)="addNewSubject()"
+                      class="btn btn-primary w-100">+
+              </button>
+            } @else {
+              <button (click)="form.controls.subjects.removeAt($index)"
+                      class="btn btn-danger w-100">-
+              </button>
             }
           </td>
         </tr>

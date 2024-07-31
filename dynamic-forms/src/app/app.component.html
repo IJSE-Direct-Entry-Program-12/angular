@@ -1,7 +1,7 @@
 <h1 class="text-center p-2 border-bottom">
   Dynamic Forms
 </h1>
-<form class="px-2" [formGroup]="form">
+<form (ngSubmit)="generateReportCard()" class="px-2" [formGroup]="form">
   <div class="p-2">
     <label for="txt-nic" class="form-label fw-bold">Student NIC</label>
     <input type="text" id="txt-nic"
@@ -74,3 +74,6 @@
     <button class="btn btn-success">Generate Report Card</button>
   </div>
 </form>
+@if (displayReportCard){
+  <app-report-card />
+}

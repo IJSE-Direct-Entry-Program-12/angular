@@ -2,33 +2,35 @@ import {Component, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CustomValidators} from "./custom-validators";
+import {ReportCardComponent} from "./report-card/report-card.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ReactiveFormsModule],
+  imports: [RouterOutlet, ReactiveFormsModule, ReportCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   private fb = inject(FormBuilder);
   form = this.fb.group({
-    nic: ['', [Validators.required,
+    nic: ['123456789V', [Validators.required,
       Validators.pattern(/^\d{9}[Vv]$/)]],
-    name: ['', [CustomValidators.isBlank,
+    name: ['Kasun Sampath', [CustomValidators.isBlank,
       Validators.pattern(/^[A-Za-z ]+$/)]],
-    gender: ['', [Validators.required]],
+    gender: ['male', [Validators.required]],
     subjects: this.fb.array([
       this.createSubjectGroup(),
       this.createSubjectGroup(),
       this.createSubjectGroup()
     ])
   });
+  displayReportCard = false;
 
   createSubjectGroup(){
     return this.fb.group({
-      name: ['', [CustomValidators.isBlank]],
-      marks: ['', [Validators.required]]
+      name: ['Subject', [CustomValidators.isBlank]],
+      marks: ['50', [Validators.required]]
     });
   }
 
@@ -44,5 +46,15 @@ export class AppComponent {
 
   addNewSubject() {
     this.form.controls.subjects.push(this.createSubjectGroup());
+  }
+
+  generateReportCard() {
+    this.form.markAllAsTouched();
+    if (this.form.invalid){
+      this.displayReportCard = false;
+      alert("Form is invalid, please fill the form correctly");
+    }else{
+      this.displayReportCard = true;
+    }
   }
 }

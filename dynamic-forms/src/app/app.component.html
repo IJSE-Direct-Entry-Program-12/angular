@@ -5,6 +5,7 @@
   <div class="p-2">
     <label for="txt-nic" class="form-label fw-bold">Student NIC</label>
     <input type="text" id="txt-nic"
+           [class]="getCssClasses('nic')"
            formControlName="nic"
            class="form-control"
            placeholder="Enter the student nic">
@@ -12,6 +13,7 @@
   <div class="p-2">
     <label for="txt-name" class="form-label fw-bold">Student Name</label>
     <input type="text" id="txt-name"
+           [class]="getCssClasses('name')"
            formControlName="name"
            class="form-control"
            placeholder="Enter the student name">
@@ -21,11 +23,13 @@
     <div class="d-flex gap-2">
       <input type="radio" id="rd-gender-male" name="gender"
              value="male"
+             [class]="getCssClasses('gender')"
              formControlName="gender"
              class="form-check-input">
       <label for="rd-gender-male">Male</label>
       <input type="radio" id="rd-gender-female" name="gender"
              value="female"
+             [class]="getCssClasses('gender')"
              formControlName="gender"
              class="form-check-input">
       <label for="rd-gender-female">Female</label>

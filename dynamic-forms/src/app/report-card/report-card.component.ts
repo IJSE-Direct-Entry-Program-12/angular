@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-type Student = {
+export type Student = {
   name: string,
   nic: string,
   subjects: Array<{name: string, marks: number}>
@@ -21,7 +21,7 @@ export class ReportCardComponent {
     let totalMarks = 0;
     this.student.subjects.forEach(
       subject =>
-        totalMarks += subject.marks);
+        totalMarks += +subject.marks);
     return totalMarks;
   }
 

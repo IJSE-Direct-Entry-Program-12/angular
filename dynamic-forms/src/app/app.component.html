@@ -74,6 +74,6 @@
     <button class="btn btn-success">Generate Report Card</button>
   </div>
 </form>
-<!--@if (displayReportCard){-->
-  <app-report-card />
-<!--}-->
+@if (displayReportCard){
+  <app-report-card [student]="student" />
+}

@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CustomValidators} from "./custom-validators";
-import {ReportCardComponent} from "./report-card/report-card.component";
+import {ReportCardComponent, Student} from "./report-card/report-card.component";
 
 @Component({
   selector: 'app-root',
@@ -26,6 +26,9 @@ export class AppComponent {
     ])
   });
   displayReportCard = false;
+  get student(): Student{
+    return this.form.value as unknown as Student;
+}
 
   createSubjectGroup(){
     return this.fb.group({

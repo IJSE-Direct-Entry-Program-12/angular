@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 export type Student = {
   name: string,
@@ -16,6 +17,12 @@ export type Student = {
 export class ReportCardComponent {
   @Input()
   student!: Student;
+  @Output()
+  close = new EventEmitter();
+
+  constructor(titleService: Title) {
+    titleService.setTitle("Report Card");
+  }
 
   getTotalMarks() {
     let totalMarks = 0;
@@ -37,5 +44,9 @@ export class ReportCardComponent {
     if (avgMarks >= 55) return "C";
     if (avgMarks >= 45) return "S";
     return "F";
+  }
+
+  printReportCard() {
+    print();
   }
 }

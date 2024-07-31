@@ -14,11 +14,11 @@ import {ReportCardComponent, Student} from "./report-card/report-card.component"
 export class AppComponent {
   private fb = inject(FormBuilder);
   form = this.fb.group({
-    nic: ['123456789V', [Validators.required,
+    nic: ['', [Validators.required,
       Validators.pattern(/^\d{9}[Vv]$/)]],
-    name: ['Kasun Sampath', [CustomValidators.isBlank,
+    name: ['', [CustomValidators.isBlank,
       Validators.pattern(/^[A-Za-z ]+$/)]],
-    gender: ['male', [Validators.required]],
+    gender: ['', [Validators.required]],
     subjects: this.fb.array([
       this.createSubjectGroup(),
       this.createSubjectGroup(),
@@ -26,14 +26,15 @@ export class AppComponent {
     ])
   });
   displayReportCard = false;
+
   get student(): Student{
     return this.form.value as unknown as Student;
 }
 
   createSubjectGroup(){
     return this.fb.group({
-      name: ['Subject', [CustomValidators.isBlank]],
-      marks: ['50', [Validators.required]]
+      name: ['', [CustomValidators.isBlank]],
+      marks: ['', [Validators.required]]
     });
   }
 

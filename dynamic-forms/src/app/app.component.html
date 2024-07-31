@@ -1,0 +1,51 @@
+<h1 class="text-center p-2 border-bottom">
+  Dynamic Forms
+</h1>
+<form class="px-2">
+  <div class="p-2">
+    <label for="txt-nic" class="form-label fw-bold">Student NIC</label>
+    <input type="text" id="txt-nic"
+           class="form-control"
+           placeholder="Enter the student nic">
+  </div>
+  <div class="p-2">
+    <label for="txt-name" class="form-label fw-bold">Student Name</label>
+    <input type="text" id="txt-name"
+           class="form-control"
+           placeholder="Enter the student name">
+  </div>
+  <div class="p-2">
+    <label for="rd-gender-male" class="form-label fw-bold">Student Gender</label>
+    <div class="d-flex gap-2">
+      <input type="radio" id="rd-gender-male" name="gender"
+             class="form-check-input">
+      <label for="rd-gender-male">Male</label>
+      <input type="radio" id="rd-gender-female" name="gender"
+             class="form-check-input">
+      <label for="rd-gender-female">Female</label>
+    </div>
+  </div>
+  <div class="p-2">
+    <label for="rd-gender-male" class="form-label fw-bold">
+      Student Mark Sheet
+    </label>
+    <table>
+      <tr>
+        <td>
+          <input type="text" class="form-control"
+                 placeholder="Enter subject 1">
+        </td>
+        <td>
+          <input type="text" class="form-control"
+                 placeholder="Enter subject 1 marks">
+        </td>
+        <td>
+          <button class="btn btn-primary">+</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="p-2">
+    <button class="btn btn-success">Generate Report Card</button>
+  </div>
+</form>

@@ -1,0 +1,36 @@
+<p class="text-center fw-bold">Entered: {{ value }}</p>
+<hr>
+<h1 class="text-center">Let's project some content here</h1>
+<hr>
+<div class="border p-2">
+  <strong>Crazy Stuff:</strong>
+  <ng-content select="crazy-stuff"/>
+</div>
+<div class="border p-2">
+  <strong>Button:</strong>
+  <ng-content select="button"/>
+</div>
+<div class="border p-2">
+  <strong>Heading:</strong>
+  <ng-content select="h3"/>
+</div>
+<div class="border p-2">
+  <strong>Input:</strong>
+  <ng-content select="input[type=text]"/>
+</div>
+<div class="border p-2">
+  <strong>Checkbox:</strong>
+  <ng-content select="input[type=checkbox]" />
+</div>
+<div class="border p-2">
+  <strong>First Div:</strong>
+  <ng-content select="#div-1" />
+</div>
+<div class="border p-2">
+  <strong>DEP:</strong>
+  <ng-content select=".dep" />
+</div>
+<div class="border p-2">
+  <strong>Other:</strong>
+  <ng-content />
+</div>

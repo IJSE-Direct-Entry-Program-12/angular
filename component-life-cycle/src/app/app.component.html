@@ -1,0 +1,27 @@
+<h2 class="text-center p-2 border-bottom">
+  Component Life Cycle <br> Content Projection
+</h2>
+<div class="p-2">
+  <input #txt type="text" class="form-control text-center"
+         placeholder="Enter something here"
+        (input)="child.value = txt.value">
+</div>
+<div class="p-2">
+  <app-child #child>
+    <div id="div-1">First Div</div>
+    <div class="dep">Second Div</div>
+    <p class="dep">I am a paragraph</p>
+    <h3>I want to add some content</h3>
+    <h3>I want to add some content</h3>
+    <input type="text">
+    <input type="checkbox">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem consequuntur ducimus est neque voluptatum? Accusantium enim in quisquam quos ut. Animi et facilis inventore neque non nostrum similique temporibus!
+    </p>
+    <mark>Let's Mark This</mark>
+    <button>I want to add button</button>
+    <button>I want to add button</button>
+    <h1 ngProjectAs="crazy-stuff" [style.background-color]="'yellow'">My New HTML Element</h1>
+  </app-child>
+</div>
+

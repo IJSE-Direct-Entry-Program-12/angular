@@ -15,7 +15,15 @@ export class AppComponent {
     nic: ['123456789V'],
     name: ['Kasun Sampath'],
     gender: ['male'],
-    subjects: this.fb.array([[]]),
-    marks: this.fb.array([[]])
+    subjects: this.fb.array([
+      this.fb.group({
+        name: ['Operating Systems'],
+        marks: ['80']
+      }),
+      this.fb.group({
+        name: ['DBMS'],
+        marks: ['95']
+      })
+    ])
   });
 }

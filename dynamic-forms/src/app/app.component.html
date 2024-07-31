@@ -36,19 +36,21 @@
       Student Mark Sheet
     </label>
     <table>
-      <tr>
-        <td>
-          <input type="text" class="form-control"
-                 placeholder="Enter subject 1">
-        </td>
-        <td>
-          <input type="text" class="form-control"
-                 placeholder="Enter subject 1 marks">
-        </td>
-        <td>
-          <button class="btn btn-primary">+</button>
-        </td>
-      </tr>
+      @for(subject of form.controls.subjects.controls; track $index){
+        <tr>
+          <td>
+            <input type="text" class="form-control"
+                   placeholder="Enter subject 1">
+          </td>
+          <td>
+            <input type="text" class="form-control"
+                   placeholder="Enter subject 1 marks">
+          </td>
+          <td>
+            <button class="btn btn-primary">+</button>
+          </td>
+        </tr>
+      }
     </table>
   </div>
   <div class="p-2">

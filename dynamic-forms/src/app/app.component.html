@@ -44,12 +44,14 @@
         <tr [formGroup]="subject">
           <td>
             <input type="text" class="form-control"
+                   [class]="getCssClasses('name', subject)"
                    formControlName="name"
                    placeholder="Enter subject {{$index + 1}}">
           </td>
           <td>
             <input type="number" class="form-control text-center"
                    min="0" max="100"
+                   [class]="getCssClasses('marks', subject)"
                    formControlName="marks"
                    placeholder="Marks">
           </td>

@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -24,9 +24,10 @@ export class AppComponent {
     ])
   });
 
-  getCssClasses(formControlName: string) {
+  getCssClasses(formControlName: string,
+                formGroup: FormGroup = this.form) {
     const control =
-      this.form.get(formControlName)!;
+      formGroup.get(formControlName)!;
     return {
       'is-invalid': control.touched && control.invalid,
       'is-valid': control.touched && control.valid
@@ -39,8 +40,8 @@ export class AppComponent {
 
   createSubjectGroup(){
     return this.fb.group({
-      name: [''],
-      marks: ['']
+      name: ['', [Validators.required]],
+      marks: ['', [Validators.required]]
     });
   }
 }

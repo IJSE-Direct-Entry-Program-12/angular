@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {RouterOutlet} from '@angular/router';
+import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -12,9 +12,11 @@ import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 export class AppComponent {
   private fb = inject(FormBuilder);
   form = this.fb.group({
-    nic: [''],
-    name: [''],
-    gender: [''],
+    nic: ['', [Validators.required,
+      Validators.pattern(/^\d{9}[Vv]$/)]],
+    name: ['', [Validators.required,
+    Validators.pattern(/^[A-Za-z ]+$/)]],
+    gender: ['', [Validators.required]],
     subjects: this.fb.array([
       this.fb.group({
         name: [''],

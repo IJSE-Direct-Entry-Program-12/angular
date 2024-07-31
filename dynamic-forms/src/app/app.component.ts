@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {CustomValidators} from "./custom-validators";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
   form = this.fb.group({
     nic: ['', [Validators.required,
       Validators.pattern(/^\d{9}[Vv]$/)]],
-    name: ['', [Validators.required,
+    name: ['', [CustomValidators.isBlank,
       Validators.pattern(/^[A-Za-z ]+$/)]],
     gender: ['', [Validators.required]],
     subjects: this.fb.array([
@@ -23,6 +24,13 @@ export class AppComponent {
       this.createSubjectGroup()
     ])
   });
+
+  createSubjectGroup(){
+    return this.fb.group({
+      name: ['', [CustomValidators.isBlank]],
+      marks: ['', [Validators.required]]
+    });
+  }
 
   getCssClasses(formControlName: string,
                 formGroup: FormGroup = this.form) {
@@ -36,12 +44,5 @@ export class AppComponent {
 
   addNewSubject() {
     this.form.controls.subjects.push(this.createSubjectGroup());
-  }
-
-  createSubjectGroup(){
-    return this.fb.group({
-      name: ['', [Validators.required]],
-      marks: ['', [Validators.required]]
-    });
   }
 }

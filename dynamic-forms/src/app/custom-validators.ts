@@ -2,7 +2,7 @@ import {AbstractControl, ValidationErrors, Validator, ValidatorFn} from "@angula
 
 export class CustomValidators /* implements Validator */{
 
-  public static isBlank():ValidatorFn{
+  public static get isBlank():ValidatorFn{
     return function validate(control: AbstractControl): ValidationErrors | null {
       const value = control.value;
       const errors: ValidationErrors = {};

@@ -4,10 +4,10 @@
   <div id="report-container" class="bg-white rounded p-3">
     <h3 class="text-center border-bottom pb-2">Report Card</h3>
     <div class="mb-2 text-center">
-      <strong>Name: </strong> Kasun Sampath
+      <strong>Name: </strong> {{ student.name }}
     </div>
     <div class="mb-2 text-center">
-      <strong>NIC: </strong> 123456789V
+      <strong>NIC: </strong> {{ student.nic }}
     </div>
     <table class="table table-bordered">
       <thead>
@@ -17,25 +17,25 @@
       </tr>
       </thead>
       <tbody>
-        @for (subject of [1, 2, 3, 4, 5]; track $index) {
+        @for (subject of student.subjects; track $index) {
           <tr>
-            <td>Database Management System</td>
-            <td class="text-center">85</td>
+            <td>{{ subject.name }}</td>
+            <td class="text-center">{{ subject.marks }}</td>
           </tr>
         }
       </tbody>
       <tfoot>
       <tr>
         <th>Total Marks</th>
-        <th class="text-center">1250</th>
+        <th class="text-center">{{ getTotalMarks() }}</th>
       </tr>
       <tr>
         <th>Avg. Marks</th>
-        <th class="text-center">85</th>
+        <th class="text-center">{{ getAvgMarks() }}</th>
       </tr>
       <tr>
         <th>Grade</th>
-        <th class="text-center">A+</th>
+        <th class="text-center">{{ getGrade() }}</th>
       </tr>
       </tfoot>
     </table>

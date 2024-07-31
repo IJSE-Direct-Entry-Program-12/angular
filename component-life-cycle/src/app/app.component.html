@@ -4,10 +4,10 @@
 <div class="p-2">
   <input #txt type="text" class="form-control text-center"
          placeholder="Enter something here"
-        (input)="child.value = txt.value">
+        (input)="value = txt.value">
 </div>
 <div class="p-2">
-  <app-child #child>
+  <app-child #child [value]="value">
     <div id="div-1">First Div</div>
     <div class="dep">Second Div</div>
     <p class="dep">I am a paragraph</p>
@@ -21,7 +21,7 @@
     <mark>Let's Mark This</mark>
     <button>I want to add button</button>
     <button>I want to add button</button>
-    <h1 ngProjectAs="crazy-stuff" [style.background-color]="'yellow'">My New HTML Element</h1>
+    <h1 #crazy ngProjectAs="crazy-stuff" [style.background-color]="'yellow'">My New HTML Element</h1>
   </app-child>
 </div>
 

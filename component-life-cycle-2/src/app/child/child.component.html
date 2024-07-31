@@ -1,0 +1,8 @@
+<div class="text-center mb-3">
+  <button (click)="updateChildText()"
+    class="btn btn-primary">Update Child Text</button>
+</div>
+<h1 #h1 class="text-center">I am the Child Component<br>
+  {{ childText }}
+</h1>
+<ng-content></ng-content>

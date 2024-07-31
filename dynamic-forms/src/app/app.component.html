@@ -1,16 +1,18 @@
 <h1 class="text-center p-2 border-bottom">
   Dynamic Forms
 </h1>
-<form class="px-2">
+<form class="px-2" [formGroup]="form">
   <div class="p-2">
     <label for="txt-nic" class="form-label fw-bold">Student NIC</label>
     <input type="text" id="txt-nic"
+           formControlName="nic"
            class="form-control"
            placeholder="Enter the student nic">
   </div>
   <div class="p-2">
     <label for="txt-name" class="form-label fw-bold">Student Name</label>
     <input type="text" id="txt-name"
+           formControlName="name"
            class="form-control"
            placeholder="Enter the student name">
   </div>
@@ -18,9 +20,13 @@
     <label for="rd-gender-male" class="form-label fw-bold">Student Gender</label>
     <div class="d-flex gap-2">
       <input type="radio" id="rd-gender-male" name="gender"
+             value="male"
+             formControlName="gender"
              class="form-check-input">
       <label for="rd-gender-male">Male</label>
       <input type="radio" id="rd-gender-female" name="gender"
+             value="female"
+             formControlName="gender"
              class="form-check-input">
       <label for="rd-gender-female">Female</label>
     </div>

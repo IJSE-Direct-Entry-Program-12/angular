@@ -12,9 +12,9 @@ import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 export class AppComponent {
   private fb = inject(FormBuilder);
   form = this.fb.group({
-    nic: [],
-    name: [],
-    gender: [],
+    nic: ['123456789V'],
+    name: ['Kasun Sampath'],
+    gender: ['male'],
     subjects: this.fb.array([[]]),
     marks: this.fb.array([[]])
   });

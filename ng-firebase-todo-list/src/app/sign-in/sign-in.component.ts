@@ -4,12 +4,14 @@ import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {AuthService} from "../service/auth.service";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
   imports: [
-    MatButton
+    MatButton,
+    MatIcon
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'

@@ -3,6 +3,7 @@ import {MatIcon} from "@angular/material/icon";
 import {AuthService} from "../service/auth.service";
 import {MatButton} from "@angular/material/button";
 import {NgIf} from "@angular/common";
+import {MatToolbar} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-app-bar',
@@ -10,7 +11,8 @@ import {NgIf} from "@angular/common";
   imports: [
     MatIcon,
     MatButton,
-    NgIf
+    NgIf,
+    MatToolbar
   ],
   templateUrl: './app-bar.component.html',
   styleUrl: './app-bar.component.css'

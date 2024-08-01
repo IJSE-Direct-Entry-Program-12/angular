@@ -1,5 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Auth, authState, GoogleAuthProvider, signInWithPopup, signOut, User} from "@angular/fire/auth";
+import {
+  Auth,
+  authState,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  User
+} from "@angular/fire/auth";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -15,9 +23,9 @@ export class AuthService {
       (user: User | null) => {
         this.user = user;
         this.initialized = true;
-        if (user){
+        if (user) {
           routerService.navigateByUrl("/");
-        }else{
+        } else {
           routerService.navigateByUrl("/sign-in");
         }
       });
@@ -31,8 +39,12 @@ export class AuthService {
     return this.user;
   }
 
-  signIn() {
+  signInWithGoogle() {
     signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
+
+  signInWithGithub() {
+    signInWithPopup(this.auth, new GithubAuthProvider());
   }
 
   signOut() {

@@ -1,5 +1,16 @@
 import { Injectable } from '@angular/core';
-import {collection, collectionData, deleteDoc, doc, Firestore, getDocs, query, where} from "@angular/fire/firestore";
+import {
+  addDoc,
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+  Firestore,
+  getDocs,
+  query,
+  updateDoc,
+  where
+} from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 
 export type Task = {
@@ -29,6 +40,25 @@ export class TaskService {
   }
 
   removeTask(task: Task) {
-    deleteDoc(doc(this.taskCollectionRef, task._id));
+    const docRef
+      = doc(this.taskCollectionRef, task._id);
+    deleteDoc(docRef);
+  }
+
+  updateTaskStatus(task: Task){
+    const docRef
+      = doc(this.taskCollectionRef, task._id);
+    updateDoc(docRef, {
+      completed: !task.completed
+    });
+  }
+
+  async createNewTask(description: string, user: string){
+    const newTask = {
+      description,
+      user,
+      completed: false
+    };
+    await addDoc(this.taskCollectionRef, newTask);
   }
 }

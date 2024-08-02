@@ -39,6 +39,11 @@ export class AuthService {
     return this.user;
   }
 
+  getPrincipalEmail(){
+    return this.user?.email ??
+      this.user?.providerData?.at(0)?.email;
+  }
+
   signInWithGoogle() {
     signInWithPopup(this.auth, new GoogleAuthProvider());
   }

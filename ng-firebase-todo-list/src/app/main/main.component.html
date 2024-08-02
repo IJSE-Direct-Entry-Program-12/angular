@@ -1,2 +1,15 @@
 <app-app-bar/>
-<p class="p-2">main works!</p>
+<div class="mt-2 px-2">
+  @for (task of taskList; track task._id) {
+    <div class="hover:bg-gray-100 rounded flex justify-between
+          items-center">
+      <mat-checkbox [checked]="task.completed" class="example-margin">
+        {{ task.description }}
+      </mat-checkbox>
+      <mat-icon (click)="taskService.removeTask(task)"
+                class="!text-2xl pr-2 text-gray-400
+                cursor-pointer hover:text-red-500"
+                fontIcon="delete" inline/>
+    </div>
+  }
+</div>

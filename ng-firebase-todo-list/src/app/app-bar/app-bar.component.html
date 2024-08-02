@@ -19,7 +19,7 @@ border-gray-300 rounded-b">
   <div class="text-center border-0 border-b
   border-solid border-gray-300 p-2 px-8">
   <div class="font-medium">Hi, {{ authService.getPrincipal()?.displayName }}!</div>
-  <div>{{ authService.getPrincipal()?.email }}</div>
+  <div>{{ authService.getPrincipalEmail()}}</div>
   </div>
   <button mat-stroked-button (click)="authService.signOut()">Sign Out</button>
 </div>

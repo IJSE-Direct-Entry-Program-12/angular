@@ -1,4 +1,4 @@
-import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, provideZoneChangeDetection, isDevMode} from '@angular/core';
 import {provideRouter} from '@angular/router';
 
 import {routes} from './app.routes';
@@ -6,6 +6,7 @@ import {provideAnimationsAsync} from '@angular/platform-browser/animations/async
 import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({eventCoalescing: true}), provideRouter(routes), provideAnimationsAsync(),
@@ -18,5 +19,8 @@ export const appConfig: ApplicationConfig = {
         "authDomain": "ng-firebase-todo-list-56764.firebaseapp.com",
         "messagingSenderId": "216679237743"
       })), provideAuth(() => getAuth()),
-    provideFirestore((() => getFirestore()))]
+    provideFirestore((() => getFirestore())), provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          })]
 };

@@ -8,6 +8,7 @@ import {
   Firestore,
   getDocs,
   query,
+  Timestamp,
   updateDoc,
   where
 } from "@angular/fire/firestore";
@@ -17,7 +18,8 @@ export type Task = {
   _id: string,
   description: string,
   completed: boolean,
-  user: string
+  user: string,
+  timestamp: Timestamp
 }
 
 @Injectable({
@@ -57,7 +59,8 @@ export class TaskService {
     const newTask = {
       description,
       user,
-      completed: false
+      completed: false,
+      timestamp: Timestamp.now()
     };
     await addDoc(this.taskCollectionRef, newTask);
   }

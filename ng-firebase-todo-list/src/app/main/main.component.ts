@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {AppBarComponent} from "../app-bar/app-bar.component";
 import {Task, TaskService} from "../service/task.service";
@@ -9,6 +9,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 import {FormsModule} from "@angular/forms";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-main',
@@ -21,7 +22,8 @@ import {FormsModule} from "@angular/forms";
     MatLabel,
     MatInput,
     MatButton,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
@@ -30,30 +32,41 @@ export class MainComponent {
 
   taskList: Array<Task> = [];
   description = "";
+  isLoading = true;
 
   constructor(titleService: Title,
               private authService: AuthService,
               protected taskService: TaskService) {
     titleService.setTitle("To-do List App");
     taskService.getTasks(authService.getPrincipalEmail()!)
-      .subscribe(taskList =>{
-        console.log(taskList);
+      .subscribe(taskList => {
         this.taskList = taskList;
+        this.isLoading = false;
+        this.taskList.sort(
+          (task1: Task, task2: Task) => {
+            if (task1.timestamp.toMillis() <
+              task2.timestamp.toMillis()) return 1;
+            else if (task1.timestamp.toMillis() ===
+              task2.timestamp.toMillis()) return 0;
+            else {
+              return -1;
+            }
+          })
       });
   }
 
   async addTask(txt: HTMLInputElement) {
-    if (!this.description.trim().length){
+    if (!this.description.trim().length) {
       txt.select();
       txt.focus();
       return;
-    }else{
+    } else {
       try {
         await this.taskService.createNewTask(this.description,
           this.authService.getPrincipalEmail()!);
         this.description = "";
         txt.focus();
-      }catch(e){
+      } catch (e) {
         console.log(e);
         alert("Failed to save the task, try again");
       }
